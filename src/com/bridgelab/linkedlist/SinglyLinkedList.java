@@ -13,6 +13,7 @@ public class SinglyLinkedList {
         }
     }
 
+    public int size;
     //Represent the head and tail of the singly linked list
     public Node head = null;
     public Node tail = null;
@@ -34,6 +35,43 @@ public class SinglyLinkedList {
             //newNode will become new tail of the list
             tail = newNode;
         }
+
+        //Size will count the number of nodes present in the list
+        size++;
+    }
+
+    public void addInMid(int data){
+        //Create a new node
+        Node newNode = new Node(data);
+
+        //Checks if the list is empty
+        if(head == null) {
+            //If list is empty, both head and tail would point to new node
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            Node temp, current;
+            //Store the mid position of the list
+            int count = (size % 2 == 0) ? (size/2) : ((size+1)/2);
+            //Node temp will point to head
+            temp = head;
+            current = null;
+
+            //Traverse through the list till the middle of the list is reached
+            for(int i = 0; i < count; i++) {
+                //Node current will point to temp
+                current = temp;
+                //Node temp will point to node next to it.
+                temp = temp.next;
+            }
+
+            //current will point to new node
+            current.next = newNode;
+            //new node will point to temp
+            newNode.next = temp;
+        }
+        size++;
     }
 
     //display() will display all the nodes present in the list
@@ -66,5 +104,11 @@ public class SinglyLinkedList {
 
         //Displays the nodes present in the list
         sList.display();
+
+        //Inserting node '3' in the middle
+        sList.addInMid(3);
+        System.out.println( "Updated List: ");
+        sList.display();
+
     }
 }
