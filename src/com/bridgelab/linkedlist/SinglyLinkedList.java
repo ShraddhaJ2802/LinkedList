@@ -137,6 +137,30 @@ public class SinglyLinkedList {
         }
     }
 
+    public void searchNode(int data) {
+        Node current = head;
+        int i = 1;
+        boolean flag = false;
+        //Checks whether list is empty
+        if(head == null) {
+            System.out.println("List is empty");
+        }
+        else {
+            while(current != null) {
+                //Compares node to be found with each node present in the list
+                if(current.data == data) {
+                    flag = true;
+                    break;
+                }
+                i++;
+                current = current.next;
+            }
+        }
+        if(flag)
+            System.out.println("Element is present in the list at the position : " + i);
+        else
+            System.out.println("Element is not present in the list");
+    }
     public static void main(String[] args) {
 
         SinglyLinkedList sList = new SinglyLinkedList();
@@ -162,13 +186,16 @@ public class SinglyLinkedList {
             System.out.println("Updated List: ");
             sList.display();
             */
-        while(sList.head != null) {
+       /* while(sList.head != null) {
             sList.deleteFromEnd();
             //Printing updated list
             System.out.println("Updated List: ");
             sList.display();
 
-        }
+        }*/
+
+        //Search for node 2 in the list
+        sList.searchNode(30);
 
     }
 }
