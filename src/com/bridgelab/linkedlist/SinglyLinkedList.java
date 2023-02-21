@@ -3,7 +3,7 @@ package com.bridgelab.linkedlist;
 public class SinglyLinkedList {
 
     //Represent a node of the singly linked list
-    class Node{
+    class Node {
         int data;
         Node next;
 
@@ -24,12 +24,11 @@ public class SinglyLinkedList {
         Node newNode = new Node(data);
 
         //Checks if the list is empty
-        if(head == null) {
+        if (head == null) {
             //If list is empty, both head and tail will point to new node
             head = newNode;
             tail = newNode;
-        }
-        else {
+        } else {
             //newNode will be added after tail such that tail's next will point to newNode
             tail.next = newNode;
             //newNode will become new tail of the list
@@ -40,26 +39,25 @@ public class SinglyLinkedList {
         size++;
     }
 
-    public void addInMid(int data){
+    public void addInMid(int data) {
         //Create a new node
         Node newNode = new Node(data);
 
         //Checks if the list is empty
-        if(head == null) {
+        if (head == null) {
             //If list is empty, both head and tail would point to new node
             head = newNode;
             tail = newNode;
-        }
-        else {
+        } else {
             Node temp, current;
             //Store the mid position of the list
-            int count = (size % 2 == 0) ? (size/2) : ((size+1)/2);
+            int count = (size % 2 == 0) ? (size / 2) : ((size + 1) / 2);
             //Node temp will point to head
             temp = head;
             current = null;
 
             //Traverse through the list till the middle of the list is reached
-            for(int i = 0; i < count; i++) {
+            for (int i = 0; i < count; i++) {
                 //Node current will point to temp
                 current = temp;
                 //Node temp will point to node next to it.
@@ -77,14 +75,13 @@ public class SinglyLinkedList {
     public void deleteFromStart() {
 
         //Checks if the list is empty
-        if(head == null) {
+        if (head == null) {
             System.out.println("List is empty");
             return;
-        }
-        else {
+        } else {
             //Checks whether the list contains only one node
             //If not, the head will point to next node in the list and tail will point to the new head.
-            if(head != tail) {
+            if (head != tail) {
                 head = head.next;
             }
             //If the list contains only one node
@@ -100,17 +97,44 @@ public class SinglyLinkedList {
         //Node current will point to head
         Node current = head;
 
-        if(head == null) {
+        if (head == null) {
             System.out.println("List is empty");
             return;
         }
         System.out.println("Nodes of singly linked list: ");
-        while(current != null) {
+        while (current != null) {
             //Prints each node by incrementing pointer
             System.out.print(current.data + " ");
             current = current.next;
         }
         System.out.println();
+    }
+
+    public void deleteFromEnd() {
+
+        //Checks if the list is empty
+        if(head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        else {
+            //Checks whether the list contains only one element
+            if(head != tail ) {
+                Node current = head;
+                //Loop through the list till the second last element such that current.next is pointing to tail
+                while(current.next != tail) {
+                    current = current.next;
+                }
+                //Second last element will become new tail of the list
+                tail = current;
+                tail.next = null;
+            }
+            //If the list contains only one element
+            //Then it will remove it and both head and tail will point to null
+            else {
+                head = tail = null;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -128,15 +152,23 @@ public class SinglyLinkedList {
 
         //Inserting node '3' in the middle
         sList.addInMid(3);
-        System.out.println( "Updated List: ");
+        System.out.println("Updated List: ");
         sList.display();
 
 
-        while(sList.head != null) {
+       /* while (sList.head != null) {
             sList.deleteFromStart();
+            //Printing updated list
+            System.out.println("Updated List: ");
+            sList.display();
+            */
+        while(sList.head != null) {
+            sList.deleteFromEnd();
             //Printing updated list
             System.out.println("Updated List: ");
             sList.display();
 
         }
+
+    }
 }
