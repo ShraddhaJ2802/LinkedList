@@ -74,6 +74,27 @@ public class SinglyLinkedList {
         size++;
     }
 
+    public void deleteFromStart() {
+
+        //Checks if the list is empty
+        if(head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        else {
+            //Checks whether the list contains only one node
+            //If not, the head will point to next node in the list and tail will point to the new head.
+            if(head != tail) {
+                head = head.next;
+            }
+            //If the list contains only one node
+            //then, it will remove it and both head and tail will point to null
+            else {
+                head = tail = null;
+            }
+        }
+    }
+
     //display() will display all the nodes present in the list
     public void display() {
         //Node current will point to head
@@ -110,5 +131,12 @@ public class SinglyLinkedList {
         System.out.println( "Updated List: ");
         sList.display();
 
-    }
+
+        while(sList.head != null) {
+            sList.deleteFromStart();
+            //Printing updated list
+            System.out.println("Updated List: ");
+            sList.display();
+
+        }
 }
