@@ -1,9 +1,12 @@
 package com.bridgelab.linkedlist;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SinglyLinkedList {
 
     //Represent a node of the singly linked list
-    class Node {
+   /* class Node {
         int data;
         Node next;
 
@@ -205,10 +208,10 @@ public class SinglyLinkedList {
             System.out.println("Element is present in the list at the position : " + i);
         else
             System.out.println("Element is not present in the list");
-    }
+    }*/
     public static void main(String[] args) {
 
-        SinglyLinkedList sList = new SinglyLinkedList();
+       /* SinglyLinkedList sList = new SinglyLinkedList();
 
         //Add nodes to the list
         sList.addNode(56);
@@ -237,7 +240,7 @@ public class SinglyLinkedList {
             System.out.println("Updated List: ");
             sList.display();
 
-        }*/
+        }
 
         //Search for node 2 in the list
         sList.searchNode(30);
@@ -247,7 +250,23 @@ public class SinglyLinkedList {
             //Printing updated list
             System.out.println("Updated List: ");
             sList.display();
-        }
+        }*/
+
+
+
+        //Orderd List
+
+
+        List number = new LinkedList();
+        number.add(56);
+        number.add(30);
+        number.add(40);
+        number.add(70);
+
+        System.out.println("LinkedList content: " + number);
+        System.out.println("LinkedList size: " + number.size());
+    }
+
 
     }
 }
